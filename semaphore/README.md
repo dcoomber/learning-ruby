@@ -168,3 +168,81 @@ Then run `bundle install`
 ```
 echo 'vendor/bundle' >> .gitignore
 ```
+
+### Other items
+
+#### Devise
+
+Add the following to your Gemfile
+
+```
+gem 'devise'
+```
+
+Run `bundle install` to install the gem.
+
+Generate the devise views with `bundle exec rails generate devise:install`
+
+Add the following snippet to the `config/environments/development.rb` and `config/environments/test.rb` files:
+
+```
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+```
+
+Add the following to `config/routes.rb`:
+
+```
+root to: “home#index”
+```
+
+Add alerts and notifications to the application layout `app/views/layouts/application.html.erb`. This will be used by Devise to display errors in the user authorization flow.
+
+```
+<p class=”notice”><%= notice %></p>
+<p class=”alert”><%= alert %></p>
+```
+
+Finally, create a user model, and run the migrations:
+
+```
+bundle exec rails generate devise User
+bundle exec rails db:migrate
+```
+
+### Bootstrapping the homepage
+
+Add the following controller (`app/controllers/home_controller.rb`):
+
+```
+class HomeController < ApplicationController
+    def index
+    end
+end
+```
+
+#### Create a view for the controller action
+
+##### RSpec unit test for a home controller
+
+Create the following file:  `spec/controllers/home_controller_spec.rb`
+
+```
+require “rails_helper”
+
+RSpec.describe HomeController do
+    let(:user) { instance_double(User) }
+
+        before { log_in(user) }
+
+        describe “GET #index” do
+            it “returns status ok” do
+            get :index
+
+            expect(response.status).to be(200)
+        end
+    end
+
+end
+```
+
+
