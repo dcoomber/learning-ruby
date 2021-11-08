@@ -1,5 +1,6 @@
 # Objects
-puts "Objects"
+puts 'Objects'
+
 =begin
 * No primitives in Ruby, only objects
 * Similar to physical objects
@@ -10,7 +11,7 @@ puts "Objects"
 =end
 
 # Variables
-puts "Variables"
+puts 'Variables'
 
 =begin
 * Variables are not objects, but act like an object once assigned
@@ -32,14 +33,14 @@ puts x
 puts x + 1
 
 # Must do assignment first (e.g. uncomment next line and will fail)
-#y
+# y
 
 y = 10
 
 puts y
 
 # Numbers: Integers
-puts "Numbers: Integers"
+puts 'Numbers: Integers'
 
 =begin
 * Integer
@@ -54,16 +55,95 @@ puts y
 puts y.class
 puts y.next
 
-
 # Numbers: Floats
+puts 'Numbers: Floats'
 
 =begin
 * Integer
 * Float
 * Both inherit from Numeric
 * Float has a decimal (i.e. precision)
-* 
 =end
 
-puts 13.class
-puts 13.0.class
+x = 10
+puts x.class
+
+y = 10.0
+puts y.class
+
+puts '  converts integer to float when adding a float to an integer'
+x += y
+puts x.class
+
+puts '  when dividing integers, Ruby assumes you don\'t care for the precision'
+x = 10 / 3
+puts x
+puts x.class
+
+puts '  works when making one or both a float'
+x = 10 / 3.0
+puts x
+puts x.class
+
+x = 10 / 3.to_f
+puts x
+puts x.class
+
+# Strings
+puts 'Strings'
+
+=begin
+* Concatenate strings using plus sign (+)
+* Append operator (<<)
+=end
+
+puts 'I' + ' ' + 'love' + ' ' + 'Ruby'
+
+x = 'Hello'
+x += ' David'
+
+y = 'This'
+y << ' is cool'
+
+puts x
+puts y
+
+puts 'Tada ' * 3
+
+puts x.reverse
+
+puts y.capitalize
+
+puts y.upcase
+
+puts x.reverse.capitalize
+
+puts y.downcase
+
+puts x.length
+
+# Strings
+puts 'String escaping and interpolation'
+
+=begin
+* Escaping characters (e.g. \' \")
+* Control characters only work in double quotes
+    \n  Newline
+    \t  Tab
+    \\  Backslash
+    \a  Bell
+    \b  Backspace
+    \e  Escape
+    \f  Form feed
+    \r  Carriage return
+    \s  Space
+    \v  Vertical tab
+* Interpolation
+=end
+
+# Interpolation
+msg = 'I love Ruby'
+puts "I just called to say #{msg}."
+
+# Can also do Ruby processing
+puts "1 + 1 = #{1 + 1}"
