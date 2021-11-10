@@ -147,3 +147,41 @@ puts "I just called to say #{msg}."
 
 # Can also do Ruby processing
 puts "1 + 1 = #{1 + 1}"
+
+# Arrays
+puts 'Arrays'
+
+=begin
+* 0 indexed
+* Does not have to be homogeneous (same type)
+=end
+
+empty_array = []
+puts empty_array.to_s
+
+my_array = [1, 2, '3', 4.0, 5]
+puts my_array.to_s
+
+# Setting a value
+my_array[1] = 'two'
+puts my_array[1].to_s
+
+# Lets you skip items and preserves the order of the array (notice empty item)
+my_array[6] = 'six'
+puts my_array.to_s
+puts my_array[5].class
+
+# First item in the array
+puts my_array[0].to_s
+
+# Last item in the array
+puts my_array[-1].to_s
+
+# Subarray
+puts my_array[1, 3].to_s
+
+# Last two items in the array
+puts my_array[-2, 2].to_s
+
+# Range from array
+puts my_array[1..3].to_s
