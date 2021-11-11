@@ -185,3 +185,62 @@ puts my_array[-2, 2].to_s
 
 # Range from array
 puts my_array[1..3].to_s
+
+# Array methods
+puts 'Array methods'
+
+=begin
+* 
+=end
+
+array = [2, 4, ['a', 'b'], nil, 4, 'c']
+
+puts array.length
+puts array.size
+# Sub-array is only one element of this array
+
+puts array.reverse.to_s
+
+# bang indicates a more powerful version
+puts array.reverse! # permanently reverses array in place
+puts array.to_s
+
+puts array.shuffle.to_s
+
+puts array.shuffle! # permanently reverses array in place
+
+puts array.uniq.to_s
+
+puts array.compact.to_s  # removes any nils
+
+puts array.flatten.to_s  # flattens out sub-arrays
+
+puts array.include?(2)   # note the question mark
+
+puts array.delete_at(1)
+
+puts array.delete('c')
+
+puts [1, 2, 3, 4].join(',')   # returns a string from an array
+
+puts "1,2,3,4".split(',').to_s     # creates an array from a string
+
+puts array.push(5).to_s    # adds an item to the end of an array
+
+puts array.pop.to_s        # removes an item from the end of an array
+
+puts array.shift(1).to_s      # adds an item to the beginning of an array
+
+puts array.unshift.to_s    # removes an item from the beginnng of an array
+
+# Can add arrays together... or subtract
+puts [1,2,3] + [3,4,5]
+
+puts [1,2,3] - [2]
+
+# Hashes
+puts 'Hashes'
+
+=begin
+* 
+=end
