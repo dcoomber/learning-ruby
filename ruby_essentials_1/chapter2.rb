@@ -242,5 +242,62 @@ puts [1,2,3] - [2]
 puts 'Hashes'
 
 =begin
-* 
+* Hash:  An unordered, object-indexed collection of objects (or key-value pairs)
+* Object indexed, not integer indexed
+* Hash keys must be unique
+* Called dictionaries or associated arrays in other languages
+* Uses curly braces (a bit like JSON notation?)
+* Hash rocket =>
 =end
+
+car = {
+    'brand' => 'Ford',
+    'model' => 'Mustang',
+    'year' => 1964,
+    'color' => 'Blue',
+    'interior_color' => 'Tan'
+}
+
+puts car.to_s
+
+# Returning values - same notation for arrays
+puts car['model']
+
+# Add a new key-value pair
+car['doors'] = 4
+
+# Return an array of the keys
+puts car.keys.to_s
+
+puts car.values.to_s
+
+puts car.length
+puts car.size
+
+# Symbols
+puts 'Symbols'
+
+=begin
+* Like strings, but cannot be edited
+* Begins with a colon
+* Not delimited by quotes
+* All lowercase, underscore, and no spaces
+* A string that acts as a label
+* Can be used as a hash key
+* More efficient than strings (memory management)
+* New hash symobol shorthand - looks a lot like JSON (keys in shorthand are always a symbol)
+* Cannot use integers as keys with the shorthand
+=end
+
+person = {
+    :name => 'David',
+    :lastname => 'Smith'
+}
+
+puts person[:name].to_s
+
+# New hash shorthand - looks a lot like JSON
+
+scores = {low: 1, medium: 2, high: 3}
+
+puts scores.to_s
