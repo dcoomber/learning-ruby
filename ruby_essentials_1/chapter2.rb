@@ -301,3 +301,79 @@ puts person[:name].to_s
 scores = {low: 1, medium: 2, high: 3}
 
 puts scores.to_s
+
+# Booleans
+puts 'Booleans'
+
+=begin
+* Comparison and logic operators
+=end
+
+x = 1
+puts x == 1
+puts x != 1
+puts x > 0 && x < 100
+puts x.positive?
+puts x.between?(1, 100)
+
+puts person.key?(:name)
+person.has_value?('David')
+
+# Ranges
+puts 'Ranges'
+
+=begin
+* Inclusive range 1..10
+* Exlusive range 1...10
+* Most useful in loops and iterators
+=end
+
+inclusive = 1..10
+
+puts inclusive.include?(5).to_s
+
+# Explode out into array
+array = [*inclusive]
+puts array.to_s
+
+# Constants
+puts 'Constants'
+
+=begin
+* Constants are always in all caps
+* Can change the value - Ruby will warn
+* Even if just first letter is Caps, Ruby will warn
+=end
+
+# Nil
+puts 'Nil'
+
+=begin
+* Nothing, Null
+=end
+
+product = nil
+puts product.nil?
+puts !product
+
+# Challenge: Roman Numerals
+puts 'Challenge: Roman Numerals'
+
+number_map_array = [nil, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX']
+
+puts number_map_array[4]
+
+number_map_hash = {
+    1 => 'I',
+    2 => 'II',
+    3 => 'III',
+    4 => 'IV',
+    5 => 'V',
+    6 => 'VI',
+    7 => 'VII',
+    8 => 'VIII',
+    9 => 'IX',
+    10 => 'X'
+}
+
+puts number_map_hash[6]
