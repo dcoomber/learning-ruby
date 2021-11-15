@@ -1,21 +1,21 @@
+#!/usr/bin/env ruby
+
 # Control Structures
 puts '# Control Structures'
 
-=begin
-* Determine circumstances at runtime
-* Conditionals
-* Loops
-* Iterators
-=end
+# Notes
+# * Determine circumstances at runtime
+# * Conditionals
+# * Loops
+# * Iterators
 
 # Conditionals
 puts '# Conditionals'
 
-=begin
-* If else elsif
-* Unless
-* Case
-=end
+# Notes
+# * If else elsif
+# * Unless
+# * Case
 
 fruit = 'apple'
 
@@ -38,10 +38,9 @@ end
 # Unless
 puts '# Unless'
 
-=begin
-* Opposite of if (e.g. if !TRUE)
-* Sometimes aids in readability (e.g. when negative... .sold_out? as opposed to .visible?)
-=end
+# Notes
+# * Opposite of if (e.g. if !TRUE)
+# * Sometimes aids in readability (e.g. when negative... .sold_out? as opposed to .visible?)
 
 cart = ['apple', 'orange', 'banana']
 
@@ -54,9 +53,8 @@ end
 # Case
 puts '# Case'
 
-=begin
-* If more than a couple of options, case is better than if / unless
-=end
+# Notes
+# * If more than a couple of options, case is better than if / unless
 
 count = 5
 
@@ -112,14 +110,13 @@ puts 'Hello' if greeting_enabled
 # Loops
 puts '# Loops'
 
-=begin
-* For
-* While
-* Until
-* Break
-* Next
-* Redo
-=end
+# Notes
+# * For
+# * While
+# * Until
+# * Break
+# * Next
+# * Redo
 
 i = 5
 loop do
@@ -145,29 +142,28 @@ end
 # Iterators
 puts '# Iterators'
 
-=begin
-* Numbers
-  * times
-  * upto
-  * downto
-* Range
-  * each
-  * step
-* String
-  * each_line
-  * each_char
-  * each_byte
-* Array
-  * each
-  * each_index
-  * each_with_index
-* Hash
-  * each
-  * each_key
-  * each_value
-  * each_pair
-* block variables
-=end
+# Notes
+# * Numbers
+#   * times
+#   * upto
+#   * downto
+# * Range
+#   * each
+#   * step
+# * String
+#   * each_line
+#   * each_char
+#   * each_byte
+# * Array
+#   * each
+#   * each_index
+#   * each_with_index
+# * Hash
+#   * each
+#   * each_key
+#   * each_value
+#   * each_pair
+# * block variables
 
 i = 5
 

@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 #############################################
 # Ruby interpreter installed?
 puts 'Check if Ruby interpreter is installed with `ruby -v`'
@@ -8,7 +10,7 @@ puts 'Execute a single command with `ruby -e \'puts 123\'`'
 # Put it into a file to execute mutliple commands
 # Run with ruby <filename>
 puts 123
-puts 456 
+puts 456
 puts 789
 
 

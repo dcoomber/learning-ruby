@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # Challenge: Blanket Patterns
 puts 'Challenge: Blanket Patterns'
 

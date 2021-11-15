@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # Challenge: Roman Numerals
 puts 'Challenge: Roman Numerals'
 
