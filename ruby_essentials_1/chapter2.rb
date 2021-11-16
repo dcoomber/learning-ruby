@@ -1,30 +1,30 @@
+#!/usr/bin/env ruby
+
 # Objects
 puts 'Objects'
 
-=begin
-* No primitives in Ruby, only objects
-* Similar to physical objects
-* Objects can represent abstract ideas
-* Have attributes
-* Instance of a class, differentiated by attributes
-* Have behaviours
-=end
+# Notes
+# * No primitives in Ruby, only objects
+# * Similar to physical objects
+# * Objects can represent abstract ideas
+# * Have attributes
+# * Instance of a class, differentiated by attributes
+# * Have behaviours
 
 # Variables
 puts 'Variables'
 
-=begin
-* Variables are not objects, but act like an object once assigned
-* References an object
-* Convention:  lowercase_with_underscores
-* Use plain English for variables names - better readablity
-* Scope indicators
-    $variable    Global variable
-    @@variable   Class variable
-    @variable    Instance variable
-    variable     Local
-    variable     Block
-=end
+# Notes
+# * Variables are not objects, but act like an object once assigned
+# * References an object
+# * Convention:  lowercase_with_underscores
+# * Use plain English for variables names - better readablity
+# * Scope indicators
+#     $variable    Global variable
+#     @@variable   Class variable
+#     @variable    Instance variable
+#     variable     Local
+#     variable     Block
 
 x = 1
 
@@ -42,11 +42,10 @@ puts y
 # Numbers: Integers
 puts 'Numbers: Integers'
 
-=begin
-* Integer
-* Float
-* Assignment shorthand (x += 2)
-=end
+# Notes
+# * Integer
+# * Float
+# * Assignment shorthand (x += 2)
 
 y += 2
 
@@ -58,12 +57,11 @@ puts y.next
 # Numbers: Floats
 puts 'Numbers: Floats'
 
-=begin
-* Integer
-* Float
-* Both inherit from Numeric
-* Float has a decimal (i.e. precision)
-=end
+# Notes
+# * Integer
+# * Float
+# * Both inherit from Numeric
+# * Float has a decimal (i.e. precision)
 
 x = 10
 puts x.class
@@ -92,10 +90,9 @@ puts x.class
 # Strings
 puts 'Strings'
 
-=begin
-* Concatenate strings using plus sign (+)
-* Append operator (<<)
-=end
+# Notes
+# * Concatenate strings using plus sign (+)
+# * Append operator (<<)
 
 puts 'I' + ' ' + 'love' + ' ' + 'Ruby'
 
@@ -125,21 +122,20 @@ puts x.length
 # Strings
 puts 'String escaping and interpolation'
 
-=begin
-* Escaping characters (e.g. \' \")
-* Control characters only work in double quotes
-    \n  Newline
-    \t  Tab
-    \\  Backslash
-    \a  Bell
-    \b  Backspace
-    \e  Escape
-    \f  Form feed
-    \r  Carriage return
-    \s  Space
-    \v  Vertical tab
-* Interpolation
-=end
+# Notes
+# * Escaping characters (e.g. \' \")
+# * Control characters only work in double quotes
+#     \n  Newline
+#     \t  Tab
+#     \\  Backslash
+#     \a  Bell
+#     \b  Backspace
+#     \e  Escape
+#     \f  Form feed
+#     \r  Carriage return
+#     \s  Space
+#     \v  Vertical tab
+# * Interpolation
 
 # Interpolation
 msg = 'I love Ruby'
@@ -151,10 +147,9 @@ puts "1 + 1 = #{1 + 1}"
 # Arrays
 puts 'Arrays'
 
-=begin
-* 0 indexed
-* Does not have to be homogeneous (same type)
-=end
+# Notes
+# * 0 indexed
+# * Does not have to be homogeneous (same type)
 
 empty_array = []
 puts empty_array.to_s
@@ -188,10 +183,6 @@ puts my_array[1..3].to_s
 
 # Array methods
 puts 'Array methods'
-
-=begin
-* 
-=end
 
 array = [2, 4, ['a', 'b'], nil, 4, 'c']
 
@@ -241,14 +232,13 @@ puts [1,2,3] - [2]
 # Hashes
 puts 'Hashes'
 
-=begin
-* Hash:  An unordered, object-indexed collection of objects (or key-value pairs)
-* Object indexed, not integer indexed
-* Hash keys must be unique
-* Called dictionaries or associated arrays in other languages
-* Uses curly braces (a bit like JSON notation?)
-* Hash rocket =>
-=end
+# Notes
+# * Hash:  An unordered, object-indexed collection of objects (or key-value pairs)
+# * Object indexed, not integer indexed
+# * Hash keys must be unique
+# * Called dictionaries or associated arrays in other languages
+# * Uses curly braces (a bit like JSON notation?)
+# * Hash rocket =>
 
 car = {
     'brand' => 'Ford',
@@ -277,21 +267,20 @@ puts car.size
 # Symbols
 puts 'Symbols'
 
-=begin
-* Like strings, but cannot be edited
-* Begins with a colon
-* Not delimited by quotes
-* All lowercase, underscore, and no spaces
-* A string that acts as a label
-* Can be used as a hash key
-* More efficient than strings (memory management)
-* New hash symobol shorthand - looks a lot like JSON (keys in shorthand are always a symbol)
-* Cannot use integers as keys with the shorthand
-=end
+# Notes
+# * Like strings, but cannot be edited
+# * Begins with a colon
+# * Not delimited by quotes
+# * All lowercase, underscore, and no spaces
+# * A string that acts as a label
+# * Can be used as a hash key
+# * More efficient than strings (memory management)
+# * New hash symobol shorthand - looks a lot like JSON (keys in shorthand are always a symbol)
+# * Cannot use integers as keys with the shorthand
 
 person = {
-    :name => 'David',
-    :lastname => 'Smith'
+  name: 'David',
+  lastname: 'Smith'
 }
 
 puts person[:name].to_s
@@ -305,9 +294,8 @@ puts scores.to_s
 # Booleans
 puts 'Booleans'
 
-=begin
-* Comparison and logic operators
-=end
+# Notes
+# * Comparison and logic operators
 
 x = 1
 puts x == 1
@@ -322,11 +310,10 @@ person.has_value?('David')
 # Ranges
 puts 'Ranges'
 
-=begin
-* Inclusive range 1..10
-* Exlusive range 1...10
-* Most useful in loops and iterators
-=end
+# Notes
+# * Inclusive range 1..10
+# * Exlusive range 1...10
+# * Most useful in loops and iterators
 
 inclusive = 1..10
 
@@ -339,41 +326,17 @@ puts array.to_s
 # Constants
 puts 'Constants'
 
-=begin
-* Constants are always in all caps
-* Can change the value - Ruby will warn
-* Even if just first letter is Caps, Ruby will warn
-=end
+# Notes
+# * Constants are always in all caps
+# * Can change the value - Ruby will warn
+# * Even if just first letter is Caps, Ruby will warn
 
 # Nil
 puts 'Nil'
 
-=begin
-* Nothing, Null
-=end
+# Notes
+# * Nothing, Null
 
 product = nil
 puts product.nil?
 puts !product
-
-# Challenge: Roman Numerals
-puts 'Challenge: Roman Numerals'
-
-number_map_array = [nil, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX']
-
-puts number_map_array[4]
-
-number_map_hash = {
-    1 => 'I',
-    2 => 'II',
-    3 => 'III',
-    4 => 'IV',
-    5 => 'V',
-    6 => 'VI',
-    7 => 'VII',
-    8 => 'VIII',
-    9 => 'IX',
-    10 => 'X'
-}
-
-puts number_map_hash[6]
