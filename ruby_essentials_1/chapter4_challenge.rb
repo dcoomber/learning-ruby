@@ -7,6 +7,13 @@
 #   will include the line feed
 #   normally see chop (removes last character) or chomp (removes last character if its a line feed)
 
+# Possible game extensions
+# 1. Ask player to choose highest number
+# 2. Check validity of highest number
+# 3. Inform player if they are too high or too low
+# 4. Inform player if they are close
+# 5. Allow more guesses
+
 random_number_upper = 10
 number_of_guesses = 3
 
