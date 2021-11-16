@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+# Don't have to use explicit return
+# Ruby returns last value by default
+# Not uncommon to restate return value
+# Try to avoid using puts or print inside a method
+#    Exception:  methods designed specifically for output
+
+def subtract(n1, n2)
+  n1 - n2
+end
+
+puts subtract(8,3)
+
+# Consider final operation value carefully
+# especially operations that return nil
+def subtract (n1, n2)
+  result = n1 - n2
+  result = 0 if result < 0
+  result
+end
+
+puts subtract(8, 3)
+
+# don't use puts/print in most methods
+def longest_word(words=[])
+  longest = words.inject do |memo, word|
+    memo.length > word.length ? memo : word
+  end
+end
+
+fruits = ['apple', 'banana', 'pear', 'plum'] 
+puts longest_word(fruits)
+
+puts "I ate a #{longest_word(fruits)}."
