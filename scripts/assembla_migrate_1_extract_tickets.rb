@@ -19,7 +19,9 @@ uri = URI("#{base_uri}/booking")
 spaces_json = Net::HTTP.get_response(uri)
 exit unless spaces_json.is_a?(Net::HTTPSuccess)
 
+# https://api-docs.assembla.cc/content/ref/spaces_index.html
 puts 'GET /v1/spaces (200 OK, 204 No Content, 404 Not Found)'
+
 
 spaces_json = <<'JSON_STRING'
   [
@@ -80,6 +82,7 @@ uri = URI("#{base_uri}/booking")
 tickets_json = Net::HTTP.get_response(uri)
 exit unless tickets_json.is_a?(Net::HTTPSuccess)
 
+# https://api-docs.assembla.cc/content/ref/tickets_index.html
 puts 'GET /v1/spaces/:space_id/tickets (200 OK, 204 No Content, 404 Not Found)'
 
 tickets_json = <<'JSON_STRING'
