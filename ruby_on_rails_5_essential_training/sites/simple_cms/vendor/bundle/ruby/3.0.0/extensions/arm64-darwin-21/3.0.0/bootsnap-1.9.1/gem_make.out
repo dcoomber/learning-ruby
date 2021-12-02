@@ -1,0 +1,15 @@
+current directory: /Users/dc/git/dcoomber/learning-ruby/ruby_on_rails_5_essential_training/sites/simple_cms/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.9.1/ext/bootsnap
+/Users/dc/.rbenv/versions/3.0.2/bin/ruby -I /Users/dc/.rbenv/versions/3.0.2/lib/ruby/3.0.0 -r ./siteconf20211121-65218-v7e6w9.rb extconf.rb
+creating Makefile
+
+current directory: /Users/dc/git/dcoomber/learning-ruby/ruby_on_rails_5_essential_training/sites/simple_cms/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.9.1/ext/bootsnap
+make DESTDIR\= clean
+
+current directory: /Users/dc/git/dcoomber/learning-ruby/ruby_on_rails_5_essential_training/sites/simple_cms/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.9.1/ext/bootsnap
+make DESTDIR\=
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/dc/git/dcoomber/learning-ruby/ruby_on_rails_5_essential_training/sites/simple_cms/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.9.1/ext/bootsnap
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20211121-65218-ioa5v9/bootsnap

@@ -1,0 +1,19 @@
+current directory: /Users/dc/git/dcoomber/learning-ruby/ruby_on_rails_5_essential_training/sites/simple_cms/vendor/bundle/ruby/3.0.0/gems/byebug-11.1.3/ext/byebug
+/Users/dc/.rbenv/versions/3.0.2/bin/ruby -I /Users/dc/.rbenv/versions/3.0.2/lib/ruby/3.0.0 -r ./siteconf20211121-65218-2uu6l3.rb extconf.rb
+creating Makefile
+
+current directory: /Users/dc/git/dcoomber/learning-ruby/ruby_on_rails_5_essential_training/sites/simple_cms/vendor/bundle/ruby/3.0.0/gems/byebug-11.1.3/ext/byebug
+make DESTDIR\= clean
+
+current directory: /Users/dc/git/dcoomber/learning-ruby/ruby_on_rails_5_essential_training/sites/simple_cms/vendor/bundle/ruby/3.0.0/gems/byebug-11.1.3/ext/byebug
+make DESTDIR\=
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/dc/git/dcoomber/learning-ruby/ruby_on_rails_5_essential_training/sites/simple_cms/vendor/bundle/ruby/3.0.0/gems/byebug-11.1.3/ext/byebug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20211121-65218-5k9ub1/byebug
