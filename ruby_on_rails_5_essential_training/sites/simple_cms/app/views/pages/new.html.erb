@@ -1,11 +1,11 @@
-<%= link_to("<< Back to List", subjects_path, :class => 'back-link') %>
+<%= link_to("<< Back to List", pages_path, :class => 'back-link') %>
 
-<div class="subjects edit">
-  <h2>Update Subject</h2>
+<div class="pages new">
+  <h2>Create Page</h2>
 
-  <%= form_for(@subject) do |f| %>
+  <%= form_for(@page, :url => pages_path, :method => 'post') do |f| %>
 
-    <table summary="Subject form fields">
+    <table summary="Page form fields">
       <tr>
         <th>Name</th>
         <td><%= f.text_field(:name) %></td>
@@ -21,7 +21,7 @@
     </table>
 
     <div class="form-buttons">
-      <%= f.submit("Update Subject") %>
+      <%= f.submit("Create Page") %>
     </div>
 
   <% end %>
