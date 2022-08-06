@@ -5,10 +5,10 @@
     <%= stylesheet_link_tag('admin', :media => 'all') %>
   </head>
   <body>
+
     <div id="header">
       <h1>Simple CMS Admin</h1>
     </div>
-
     <div id="main">
       <% if !flash[:notice].blank? %>
         <div class="notice">
@@ -17,10 +17,11 @@
       <% end %>
 
       <div id="content">
-        <!-- before yield -->
         <%= yield %>
-        <!-- after yield -->
       </div>
+    </div>
+    <div id="footer">
+      <p id="copyright">&copy; lynda.com</p>
     </div>
   </body>
 </html>

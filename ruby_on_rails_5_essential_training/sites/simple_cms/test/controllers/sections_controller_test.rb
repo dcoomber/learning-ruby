@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class SectionsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
@@ -25,4 +25,5 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
     get sections_delete_url
     assert_response :success
   end
+
 end

@@ -1,5 +1,5 @@
 class DemoController < ApplicationController
-  
+
   layout 'application'
 
   def index
@@ -14,7 +14,7 @@ class DemoController < ApplicationController
   end
 
   def other_hello
-    redirect_to(:action => 'index')
+    redirect_to(:action => 'hello')
   end
 
   def lynda
@@ -22,7 +22,6 @@ class DemoController < ApplicationController
   end
 
   def escape_output
-    
   end
 
 end

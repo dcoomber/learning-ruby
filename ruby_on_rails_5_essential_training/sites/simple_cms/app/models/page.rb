@@ -1,6 +1,6 @@
 class Page < ApplicationRecord
-  # One-to-one association or one-to-many association
-  belongs_to :subject
+
+  belongs_to :subject, { :optional => false }
   has_many :sections
   has_and_belongs_to_many :admin_users
 

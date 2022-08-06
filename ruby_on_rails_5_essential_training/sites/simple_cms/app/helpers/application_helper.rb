@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def status_tag(boolean, options={})
-    options[:true_text] ||= ''
+    options[:true_text]  ||= ''
     options[:false_text] ||= ''
 
     if boolean
@@ -10,5 +10,6 @@ module ApplicationHelper
       content_tag(:span, options[:false_text], :class => 'status false')
     end
   end
+
 
 end
