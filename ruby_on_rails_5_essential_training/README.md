@@ -22,3 +22,26 @@ rails server
 ## Snippets
 1. Create a new controller:  `rails generate controller ExampleController view`
 1. Generate migration:  `rails generate migration DoNothingYet`
+1. Working with migrations:
+   ```ruby
+   rails db:migrate
+   rails db:migrate VERSION=0
+   rails db:migrate:status
+   rails db:migrate VERSION=20211211125002
+   rails db:migrate:up VERSION=20211211125002
+   rails db:migrate:down VERSION=20211211125002
+   rails db:migrate:redo VERSION=20211211125002
+   ```
+1. Generate a model:  `rails generate model SingularName`
+1. Loads IRB (Interactive Ruby) but with Rails:
+   ```ruby
+   rails console
+   rails c
+   ```
+1. Open the rails console in development environment:  `rails console development`
+1. View a list of all the configured routes:  `rails routes`
+1. Clear the web logs:  `rails log:clear to clear the log`
+
+## My course notes
+
+[Course notes](./CourseNotes_Ruby_on_Rails_5_Essential_Training.txt)
