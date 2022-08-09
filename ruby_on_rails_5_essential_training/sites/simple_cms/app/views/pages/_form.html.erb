@@ -1,12 +1,13 @@
+<%= error_messages_for(f.object) %>
+
 <table summary="Page form fields">
-  <%= error_messages_for(f.object) %>%
   <tr>
     <th>Name</th>
     <td><%= f.text_field(:name) %></td>
   </tr>
   <tr>
     <th>Subject</th>
-    <td><%= f.select(:subject_id, @subjects.map{|s| [s.name, s.id]}) %></td>
+    <td><%= f.object.subject.name %></td>
   </tr>
   <tr>
     <th>Permalink</th>

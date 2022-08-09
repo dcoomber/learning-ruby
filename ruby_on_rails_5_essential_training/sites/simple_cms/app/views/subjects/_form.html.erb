@@ -1,5 +1,6 @@
+<%= error_messages_for(f.object) %>
+
 <table summary="Subject form fields">
-  <%= error_messages_for(f.object) %>
   <tr>
     <th>Name</th>
     <td><%= f.text_field(:name) %></td>
@@ -12,6 +13,7 @@
     <th>Visible</th>
     <td><%= f.check_box(:visible) %></td>
   </tr>
+  <tr>
     <th>Created</th>
     <td><%= f.datetime_select(:created_at) %></td>
   </tr>

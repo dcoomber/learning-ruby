@@ -6,6 +6,7 @@ class AccessController < ApplicationController
 
   def menu
     # display text & links
+    @username = session[:username]
   end
 
   def login
@@ -28,11 +29,14 @@ class AccessController < ApplicationController
       flash.now[:notice] = 'Invalid username/password combination.'
       render('login')
     end
+
   end
 
   def logout
     session[:user_id] = nil
+    session[:username] = nil
     flash[:notice] = 'Logged out'
     redirect_to(access_login_path)
   end
+
 end
