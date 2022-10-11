@@ -1,0 +1,1673 @@
+Course Title: Ruby on Rails 5 Essential Training
+
+Description: Learn how to create full-featured, object-oriented web applications with the latest version of the popular, open-source Ruby on Rails framework. Ruby on Rails 5 Essential Training covers the essential features of the framework, along with best practices and real-world development techniques, resulting in a complete application with dynamic, database-driven content. Follow along to build your own version of the example project, a data-driven content management system, while you learn how to route browser requests, structure databases, render pages with dynamic content, process and validate form data, and configure authentication. Instructor Kevin Skoglund, founder of web development agency Nova Fabrica, also introduces the design principles of CRUD and helps you master Rail's built-in helpers. By the end of the course, you should be able to use Ruby on Rails to build robust web applications that are both easy to scale and maintain.
+
+
+***********************************************
+Chapter: 1. What Is Ruby on Rails?
+***********************************************
+
+
+-----------------------------------------------
+Video: Ruby on Rails introduction
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:04:52            Don't Repeat Yourself (DRY)
+Convention over Configuration (override the defaults only if you need to) 
+
+0:05:44            Basics of how the web works (browsers, servers and pages)
+HTML
+SQL
+CSS and JavaScript 
+
+
+-----------------------------------------------
+Video: Understanding MVC architecture
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:25            MVC - Model View Controller    
+
+0:00:40            Model - Data Objects that we use (e.g. the database) 
+
+0:00:46            View - presentation layer      
+
+0:00:56            Controller - processes and responds to user events 
+
+0:02:56            Rails names for MVC:
+
+Controller = ActionController
+View = ActionView
+Model = ActiveRecord
+
+NB. ActionPack is ActionController and ActionView grouped together 
+
+
+***********************************************
+Chapter: 2. Get Started
+***********************************************
+
+
+-----------------------------------------------
+Video: Configure a project
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:05:22            CREATE DATABASE simple_cms_development;
+CREATE DATABASE simple_cms_test; 
+
+0:07:33            GRANT ALL PRIVILEGES ON simple_cms_development.* TO 'rails_user'@'localhost' IDENTIFIED BY 'supersecretpassword';
+
+I had to use:
+CREATE USER 'rails_user'@'localhost' IDENTIFIED BY 'supersecretpassword';
+GRANT ALL PRIVILEGES ON *.* TO 'rails_user'@'localhost'; 
+
+
+-----------------------------------------------
+Video: Access a project
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:42            Didn't work for me until I:
+
+brew install yarn
+bundle exec rails webpacker:install 
+
+
+-----------------------------------------------
+Video: Generate a controller and view
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:25            # Use rails to generate a controller
+rails g 
+
+0:03:03            rails generate controller demo index 
+
+0:04:58            Rails conventions and sensible defaults
+
+Check app/controllers and app/views directories
+
+Also config/routes.rb 
+
+
+-----------------------------------------------
+Video: Routes
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:07:32            get ':controller(/:action(/:id))' 
+
+
+***********************************************
+Chapter: 3. Controllers, Views, and Dynamic Content
+***********************************************
+
+
+-----------------------------------------------
+Video: Render a template
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:03:45            Rails sensible defaults links index controller to index template 
+
+
+-----------------------------------------------
+Video: URL parameters
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:03:47            Controller is the best place to deal with URL parameters 
+
+
+***********************************************
+Chapter: 4. Databases and Migrations
+***********************************************
+
+
+-----------------------------------------------
+Video: Introduction to databases
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:03:31            Database - set of tables
+In rails, one database is generally one application 
+
+0:03:46            Databases are the level where we grant access permissions 
+
+0:04:36            Table is a set of rows and columns
+1 table is generally 1 model
+Represents a single concept (noun - users, products, customers, customer_names) 
+
+0:05:08            Column = a set of data of a single, simple type
+e.g. first_name, last_name are attributes of our model
+
+Data type = string, integer, etc 
+
+0:05:48            Row = single record of data
+
+Field = intersection of row and column - a single value 
+
+0:06:01            Index = data structure on table to increase lookup speed 
+
+0:06:23            Foreign key = table column to link back to another table 
+
+0:07:08            Index the foreign keys         
+
+0:07:23            Schema - the structural definition of the database 
+
+0:07:37            CRUD = Create Read Update Delete 
+
+
+-----------------------------------------------
+Video: Create a database
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:19            -- useful commands
+SHOW DATABASES;
+CREATE DATABASE db_name;
+USE db_name;
+DROP DATABASE db_name; 
+
+0:00:58            Best practice not to connect to DB as root user.
+
+GRANT ALL PRIVILEGES ON db_name.*
+TO 'username'@'localhost'
+IDENTIFIED BY 'password';
+
+SHOW GRANTS FOR 'username'@'localhost'; 
+
+
+-----------------------------------------------
+Video: Migrations
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:27            Migrations keeps application code and DB schema in sync 
+
+
+-----------------------------------------------
+Video: Generate migrations
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:38            rails generate migration DoNothingYet 
+
+
+-----------------------------------------------
+Video: Generate models
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:19            rails generate model ModelName 
+
+
+-----------------------------------------------
+Video: Run migrations
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:18            rails db:migrate               
+
+0:02:21            MySQL
+
+SHOW TABLES;            
+
+0:05:22            rails db:migrate VERSION=0     
+
+0:06:17            rails db:migrate:status        
+
+0:06:42            rails db:migrate VERSION=20211211125002 
+
+0:07:38            rails db:migrate:up VERSION=20211211125002
+rails db:migrate:down VERSION=20211211125002
+rails db:migrate:redo VERSION=20211211125002 
+
+
+-----------------------------------------------
+Video: Migration methods
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:16            rails generate migration AlterUsers 
+
+
+-----------------------------------------------
+Video: Solve migration problems
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:05:13            Keep migrations small and concise 
+
+
+***********************************************
+Chapter: 5. Models and ActiveRecord
+***********************************************
+
+
+-----------------------------------------------
+Video: ActiveRecord and ActiveRelation
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:33            active record:  A design pattern
+
+ActiveRecord:  Rails implementation of the active record pattern
+
+Retrieve and manipulate data as objects and not as static rows. 
+
+0:03:36            ARel:  ActiveRelations
+
+Object-orientated interpretation of relational algebra.  Simplifies generation of complex database queries.  Small queries are chainable.
+
+Deals with the complex joins and aggregations.
+
+Manages the timing of execution. 
+
+
+-----------------------------------------------
+Video: Model naming
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:48            rails generate model SingularName
+
+Creates a db/migrate file (plural naming convention)
+Creates a model in app/models (singular naming convention)
+
+Table names, file names and class names matter a great deal in Rails to enable use of sensible defaults. 
+
+0:04:43            Model class name should match the table name.
+
+We don't have to follow the sensible default.  Can override the table name with:
+
+self.table_name = "admin_users"
+
+of by changing the Class name... e.g. to AdminUser and the file to "admin_users" 
+
+
+-----------------------------------------------
+Video: Model attributes
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:15            On classes, would have to add reader / writer methods 
+
+0:01:55            Inheriting from ActiveRecord::Base does this for us - attribute reader / writer methods 
+
+0:02:38            Can define own accessors
+
+attr_accessor :initials
+
+Will not save to DB.  Only exists inside the ruby object while it is in scope. 
+
+
+-----------------------------------------------
+Video: The Rails console
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:24            rails console development
+
+Development is the default console... could simply:
+
+rails console
+
+or
+
+rails c 
+
+0:01:44            Loads IRB (Interactive Ruby) but with Rails 
+
+0:02:38            Allows you to interact directly with your models - saves you having to do it via browser.
+
+e.g.
+
+subject = Subject.new
+subject.name = "Test"
+subject.name 
+
+
+-----------------------------------------------
+Video: Create records
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:30            Create Records: New / save
+
+1. Instantiate object
+2. Set values
+3. Save 
+
+0:00:46            ... or as a single step...
+
+Create Records:  Create
+
+Instantiate object, set values, and save 
+
+0:03:29            subject = Subject.new
+subject.new_record?
+subject.name = "First Subject"
+
+Or as a single command:
+
+subject = Subject.new(:name => "First Subject", :position => 1, :visible => true)
+
+Now save it!
+
+subject.save
+
+subject.new_record?
+
+subject.id
+
+subject.created_at
+
+subject.updated_at
+
+if subject.save
+   puts "Saved!"
+else
+   puts "Not saved!"
+end 
+
+0:04:24            Subject.create(:name => 'Second Subject', :position => 2)
+
+Returns the object itself as the result. 
+
+
+-----------------------------------------------
+Video: Update records
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:23            Can do it as separate steps or as a single step 
+
+0:00:26            Update Records: Find / save
+
+1. Find record
+2. Set values
+3. Save 
+
+0:00:39            Update Records:  Find / update_attributes
+
+1. Find record
+2. Set values and save 
+
+0:02:16            # As 3 steps
+
+subject = Subject.find(1)
+subject.new_record?
+subject.name
+subject.name = "Initial Subject"
+subject.save 
+
+0:02:50            # As a 2 step process
+
+subject = Subject.find(2)
+subject.update_attributes(:name => 'Next Subject', :visible => true)
+
+# NOTE:  update_attributes changed to update in later versions of Rails 
+
+
+-----------------------------------------------
+Video: Delete records
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:28            Delete Records:  Find/destroy
+
+# Note there is also a DELETE method.  It bypasses some of the guardrails in Rails.  Might get unintended results 
+
+0:02:03            subject.destroy
+
+# Record is deleted from the database, but is still available in console (can't change details as now frozen).  Can refer to it in subsequent messages. 
+
+
+-----------------------------------------------
+Video: Find records
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:29            Finding records by:
+
+# primary key (raises error if not find)
+Subject.find(2)
+
+# dynamic (find_by_X returns object or nil)
+Subject.find_by_name("The Name")
+
+# Find all (returns an array of objects)
+Subject.all
+
+# Find first or last record (returns object or nil)
+Subject.first
+Subject.last 
+
+
+-----------------------------------------------
+Video: Query methods: Conditions
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:41            Constructing queries with conditions
+
+Method:  where
+
+Subject.where(:visible => true) 
+
+0:03:11            Can provide detail as a String (SQL injection is a risk), Array (more flexible) or Hash (the example above, simple escaped SQL, safe from SQL injection) 
+
+0:03:51            Returns and ActiveRelation that can be chained 
+
+0:05:36            subjects.to_sql
+
+Show you the SQL that is about to be executed. 
+
+
+-----------------------------------------------
+Video: Query methods: Order, limit,  and offset
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:15            Query methods:
+
+.order(string)
+
+.limit(integer)
+
+.offset(integer)
+
+Chainable 
+
+0:03:27            SQL Table Disambiguation - when working with joined tables, need to specify which table we're referring to 
+
+
+-----------------------------------------------
+Video: Named scopes
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:00            Assign a name to an ActiveRelation query and save it with the model.
+
+Can be called like ActiveRelation methods
+
+Can accept parameters
+
+Defined using lambda syntax 
+
+0:02:17            # Lamda syntax
+scope :active, lambda {where(:active => true)}
+
+# Static Lambda
+scope :active, -> {where(:active => true)}
+
+# The equivalent class method
+def self.active
+  where(:active => true)
+end 
+
+0:03:05            Scope referenced like a class method.
+
+Can also add in variables:
+
+scope :with_content_type, lambda {|ctype|
+  where(:content_type => ctype)
+} 
+
+0:04:17            Lamda is evaluated when called, not when defined 
+
+0:04:46            Can chain the scopes           
+
+0:07:22            Add the following code to the subject model
+
+scope :visible, lambda { where(:visible => true) }
+scope :invisible, lambda { where(:visible => false) }
+scope :sorted, lambda { order("position ASC") }
+scope :newest_first, lambda { order("created_at DESC") }
+scope :search, lambda { |query| where(["name LIKE ?", "%#{query}%"]) } 
+
+
+***********************************************
+Chapter: 6. Associations
+***********************************************
+
+
+-----------------------------------------------
+Video: Relationship types
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:55            ActiveRecord provides associations to deal with relationships 
+
+0:03:39            1:1 - One-to-one
+1:M - One-to-many
+M:N - Many-to-many 
+
+0:04:56            Many-to-many uses a JOIN table 
+
+0:06:52            One-to-one:
+CLASSROOM has_one TEACHER
+TEACHER "belongs_to" CLASSROOM
+
+One-to-many:
+TEACHER has_many COURSES
+COURSE belongs_to TEACHER
+
+Many-to-many:
+COURSE has_and_belongs_to_many STUDENTS
+STUDENT has_and_belongs_to_many COURSES
+
+Developers often refer to "habtm" when discussing this last relationship type 
+
+
+-----------------------------------------------
+Video: One-to-one associations
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:25            One-to-one association: "belongs_to" has the foreign key
+
+Always define both sides of the relationship 
+
+0:05:23            subject.page returns the page that is linked to the subject
+
+Can set the page with subject.page = page 
+
+0:05:23            Add to model definition
+
+Subject:
+  has_one :page
+
+Page:
+  belongs_to :subject 
+
+0:07:51            first_page = Page.new(:name => "First Page", :permalink => 'first', :position => 1)
+
+# subject_id = nil
+
+subject.page = first_page
+
+# This results in the page being saved at the same time as the association being set 
+
+0:08:34            Remove the association?
+
+subject.page = nil 
+
+0:09:33            subject.page.destroy will remove the association and delete the Page record 
+
+
+-----------------------------------------------
+Video: One-to-many associations
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:33            One-to-many association are more commonly used.
+
+Plural relationship names.
+
+Returns an array of objects instead of a single object. 
+
+0:03:22            # One-to-many association
+has_many :pages
+
+# Returns an array
+subject.pages
+
+# How many?
+subject.pages.size
+
+# Append to the array
+subject.pages << page
+
+# Remove an object from the collection
+subject.pages.delete(page)
+
+# Remove and destroy the page
+subject.pages.destroy(page)
+
+# Remove all
+subject.pages.clear
+subject.pages.empty? 
+
+
+-----------------------------------------------
+Video: belongs_to presence validation
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:31            page.errors.full_messages
+
+Shows the errors that blocked saving of the changes 
+
+
+-----------------------------------------------
+Video: Many-to-many associations: Simple
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:03:27            Creating a join table... naming convention:
+
+first_table + _ + second_table
+
+In alphabetical order, e.g. admin_users_pages 
+
+0:04:11            rails generate migration CreateAdminUsersPagesJoin 
+
+0:06:30            class CreateAdminUsersPagesJoin < ActiveRecord::Migration[6.1]
+  def up
+    create_table :admin_users_pages, :id => false do |t|
+      t.integer :admin_user_id
+      t.integer :page_id
+      t.timestamps
+    end
+    add_index("admin_users_pages", ["admin_user_id", "page_id"])
+  end
+
+  def down
+    drop_table :admin_users_pages
+  end
+end 
+
+0:06:36            rails db:migrate               
+
+0:07:34            AdminUser:
+  has_and_belongs_to_many :pages
+
+Page:
+  has_and_belongs_to_many :admin_users
+
+We don't need to specify the join table name as we are using Rails sensible defaults 
+
+0:09:42            rails console
+me = AdminUser.create(:first_name => 'David', :last_name => 'Coomber', :username => 'dcoomber')
+page = Page.create(:subject_id => 1, :name => 'First Page', :permalink => 'first_page')
+page.admin_users << me 
+
+
+-----------------------------------------------
+Video: Many-to-many associations: Rich
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:21            For rich joins, its better to use a name that describes the relationship of the data.
+
+The rich join table will capture additional information about the, for example, student enrolled in the courses 
+
+0:02:55            Names ending with 'ments' or 'ships' work well:
+
+Memberships
+Assignments
+etc. 
+
+0:05:14            rails generate model SectionEdit
+Edit migration file 
+
+0:06:13            AdminUser:
+  has_many :section_edits
+
+SectionEdit:
+  belongs_to :admin_users
+  belongs_to :section
+
+Section:
+  has_many :section_edits 
+
+0:08:54            SectionEdit.new(:summary => 'Test edit', :admin_user => me, :section => section) 
+
+
+-----------------------------------------------
+Video: Traverse a rich association
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:39            has_many :through              
+
+0:03:19            AdminUser:
+  has_many :sections, :through => :section_edits
+
+Section:
+   has_many :admin_users, :through => :section_edits 
+
+
+***********************************************
+Chapter: 7. CRUD, REST, and Resourceful Routes
+***********************************************
+
+
+-----------------------------------------------
+Video: CRUD
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:20            Relates to MVC:  Controller.  Can use own verbs, but better to stick to defaults.
+
+For each CRUD, there are two actions associated:
+
+Create
+  new
+  create
+
+Read
+  index
+  show
+
+Update
+  edit
+  update
+
+Delete
+  delete
+  destroy 
+
+0:03:41            Creating 3 separate controllers:
+
+SubjectsController, PagesController, SectionsController 
+
+0:05:38            # Create the views at the same time
+rails generate controller Subjects index show new edit delete 
+
+0:06:10            def create
+end
+
+def update
+end
+
+def destroy
+end 
+
+0:06:47            Need to add to routes.rb file  
+
+
+-----------------------------------------------
+Video: REST
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:37            REST - Representational State Transfer
+
+Do not perform procedures, perform state transformations upon resources 
+
+0:02:17            Organise code into resources
+
+Learn HTTP verbs and how CRUD matches each one
+
+Map a new URL syntax to controller actions
+
+Modify existing links and forms to use the new URL syntax 
+
+
+-----------------------------------------------
+Video: Resourceful routes
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:17            # Resourceful Routes
+# config/routes.rb
+
+resources :subjects
+resources :pages
+resources :sections 
+
+0:03:34            # No default for delete
+
+# config/routes.rb
+
+resources :subjects do
+  member do
+    get :delete
+  end
+end 
+
+0:03:55            You don't have to allow all defaults routes to be created.
+
+# Limiting Resourceful Routes
+
+resources :admin_users, :except => [:show]
+resources :products, :only => [:index, :show] 
+
+0:04:08            It is possible to add additional resources.
+
+resources :subjects do
+
+  member do
+    get :delete
+  end
+
+  collection do
+    get :export
+  end
+
+end 
+
+0:06:17            To see which routes are configured:
+
+$ rails routes 
+
+
+-----------------------------------------------
+Video: Resourceful URL helpers
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:45            Helpers are available!
+
+Instead of
+
+{:controller => 'subjects', :action => 'show', :id => 5}
+
+can just write
+
+subject_path(5) 
+
+0:01:40            Member routes (singular) collection routes (plural) 
+
+
+***********************************************
+Chapter: 8. Controllers and CRUD
+***********************************************
+
+
+-----------------------------------------------
+Video: Read action: Index
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:47            CRUD Read consists of two actions:  index (list all) and show (a single record) 
+
+
+-----------------------------------------------
+Video: Read action: Show
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:51            <%= link_to("Show", subject_path(subject), :class => 'action show') %> 
+
+0:03:16            Update controller:
+
+def show
+  @subject = Subject.find(params[:id])
+end 
+
+0:03:36            Exercise Files> Chapter_08 > 08_02 > paste_into_show.html.erb 
+
+
+-----------------------------------------------
+Video: Form basics
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:39            Helpers help write HTML        
+
+0:03:47            Rails: form_for :object        
+
+
+-----------------------------------------------
+Video: Create action: New
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:58            new_subject_path               
+
+0:01:32            Exercise Files > Chapter_08 > 08_04 > paste_into_new_html.erb 
+
+0:03:46            def new
+  @subject = Subject.new
+end 
+
+0:04:24            Defaults from model will display (e.g. Visible = false)
+
+Can set other defaults if needed
+
+@subject = Subject.new({:name => 'Default name'}) 
+
+
+-----------------------------------------------
+Video: Create action: Create
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:26            Data validation in the controller 
+
+0:04:35            def create
+    # Instantiate a new object using form parameters
+    @subject = Subject.new(params[:subject])
+    # Save the object
+    if @subject.save
+      # If save succeeds, redirect to the index action
+      redirect_to(subjects_path)
+    else
+      # If save fails, redisplay the form so user can fix problems
+      render('new')
+    end
+  end 
+
+0:05:04            ForbiddenAttributes error      
+
+
+-----------------------------------------------
+Video: Strong parameters
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:03:18            Mass Assignment Filtering
+
+Rails v1 & 2:  blacklisting of attributes
+
+Rails v3:  whitelisting of attributes
+
+Rails v4 & 5:  strong parameters in the controller rather than the model 
+
+0:05:57            new private method into subjects controller
+
+def create
+  @subject = Subject.new(subject_params)
+end
+
+private
+
+def subject_params
+  params.require(:subject).permit(:name, :position, :visible)
+end 
+
+
+-----------------------------------------------
+Video: Update actions: Edit/update
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:11            Exercise Files > Chapter_08 > 08_07 > simple_cms 
+
+0:01:38            Use resourceful helpers as much as possible:
+
+<%= link_to("Edit", edit_subject_path(subject), :class => 'action edit') %> 
+
+0:02:24            Use the same controller code from Show in Edit 
+
+0:02:49            Use the New erb for Edit erb   
+
+0:05:31            Controller code for Update will be very similar to Create 
+
+
+-----------------------------------------------
+Video: Delete actions: Delete/destroy
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:26            Don't always have a delete page (i.e. a confirmation page) 
+
+0:02:31            Use restful helper:
+
+<%= link_to("Delete", delete_subject_path(subject), :class => 'action delete') %> 
+
+0:03:18            Exercise Files > Chapter_08 > 08_08 > paste_into_delete.html.erb 
+
+
+-----------------------------------------------
+Video: Flash hash
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:54            Flash Hash
+
+- Stores a message in session data
+- Clears old messages after every request
+- Use for messages needed after redirect 
+
+0:02:02            flash[:notice] = "The subject was created successfully." 
+
+0:02:22            Key value pair.  The most common key notation used:
+
+Notice and Error are the most common 
+
+0:04:45            In controller:
+
+flash[:notice] = 'Subject created successfully.'
+flash[:notice] = 'Subject updated successfully.'
+flash[:notice] = "Subject '#{@subject.name}' destroyed successfully." 
+
+0:04:58            In view templates:
+
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %> 
+
+
+***********************************************
+Chapter: 9. Layouts, Partials, and View Helpers
+***********************************************
+
+
+-----------------------------------------------
+Video: Layouts
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:42            Shared page elements saved in one place - layouts 
+
+0:01:17            Layouts displayed within HTML  
+
+0:01:37            app / views / layouts          
+
+0:01:58            *.html.erb                     
+
+0:02:46            layout 'admin'                 
+
+0:02:54            Layout is specified in the controller (or turned off) 
+
+
+-----------------------------------------------
+Video: Partial templates
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:31            Partials are named with an _ at the start 
+
+0:03:46            Allows us to share code between templates 
+
+0:04:32            Rails assumes that partial is in the same directory... otherwise specify full path 
+
+
+-----------------------------------------------
+Video: Text helpers
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:11            Make common tasks easier with text helper (word_wrap, simple_format, truncate, pluralize) 
+
+0:00:34            word_wrap:  <%= word_wrap(text, :line_width => 30) %> 
+
+0:01:18            HTML ignores \n                
+
+0:01:49            <%= simple_format(text) %>     
+
+0:01:53            simple_format - turns text into HTML
+
+2 or more consecutive line breaks are turned into a paragraph break.  Otherwise a line break. 
+
+0:02:52            <%= truncate(text, :length => 28) %>
+
+Breaks on the character.  Doesn't look for whitespace.  Adds ... at the end of the text (can be configured to be something else) 
+
+0:03:21            Pluralize:  don't know how many products we'll get back
+
+<% [0, 1, 2].each do |n| %>
+  <%= pluralize(n, 'product') %> found.<br />
+<% end %> 
+
+0:04:25            Other text helpers:
+
+truncate_words - truncate after a given number of words
+highlight - adds markup around a key phrase
+excerpt - finds a specified key phrase and returns a number of words around that phrase 
+
+
+-----------------------------------------------
+Video: Number helpers
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:11            Number helpers
+
+number_to_currency
+number_to_percentage
+number_with_precision / number_to_rounded (alias)
+number_with_delimiter / number_to_delimited (alias)
+number_to_human
+number_to_human_size
+number_to_phone 
+
+0:01:13            Accept a number of options
+
+:delimiter (default to ,)
+:separator (default to .)
+:precision (decimal places to show - default varies 2 - 3) 
+
+0:01:29            number_to_currency defaults to USD - override with :unit => "kr", :format => "%n %u" 
+
+0:03:49            Number to human size is for file sizes 
+
+
+-----------------------------------------------
+Video: Date and time helpers
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:31            Date and time helpers are available anywhere - even Rails console 
+
+0:00:49            Time.now + 30.days - 23.minutes 
+
+0:01:20            30.days.ago vs. Time.now - 30.days 
+
+0:01:28            30.days.from_now vs. Time.now - 30.days 
+
+0:01:39            Relative DateTime Calculations
+
+beginning_of_day
+beginning_of_week
+yesterday
+last_month
+end_of_day
+... etc. 
+
+0:02:04            Can be chained...
+
+Time.now.last_year.end_of_month.beginning_of_day 
+
+0:02:24            strftime
+
+e.g. Time.now.strftime("%B %d, %Y %H:%M") = "July 17, 2016 18:14" 
+
+0:02:24            DateTime formatting            
+
+
+-----------------------------------------------
+Video: Custom helpers
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:41            Custom helpers - file name and module name must match 
+
+0:01:20            app / helpers                  
+
+0:01:46            module ApplicationHelper
+
+  def status_tag(boolean, options={})
+    options[:true_text] ||= ''
+    options[:false_text] ||= ''
+
+    if boolean
+      content_tag(:span, options[:true_text], :class => 'status true')
+    else
+      content_tag(:span, options[:false_text], :class => 'status false')
+    end
+  end
+end 
+
+
+-----------------------------------------------
+Video: Sanitization helpers
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:40            Treat all data that comes in from users as unsafe
+
+URL parameters
+Form parameters
+Cookie data
+Database data 
+
+0:02:03            html_escape() or h()           
+
+0:04:04            <% evil_string = "<script>alert('Gotcha!');</script>" %>
+<% good_string = "<string>Welcome to my site!;</strong>" %> 
+
+0:04:24            <%= evil_string %><br />
+<%= good_string %><br /> 
+
+0:07:30            strip_links (removed links from within text, but leave other HTML tags 
+
+0:07:47            strip_tags will remove all HTML tags 
+
+0:08:10            sanitize allows you to specify allowed tags (e.g. to give users ability to format text using html 
+
+
+***********************************************
+Chapter: 10. Assets
+***********************************************
+
+
+-----------------------------------------------
+Video: Asset pipeline
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:10            Asset pipeline - concatenate CSS and JavaScript, including compression / minifies
+
+Fingerprinting forces browser to keep cached assets up-to-date 
+
+0:04:25            Precompile if environment is production
+
+export RAILS_ENV=production
+bundle exec rails assets:precompile 
+
+0:04:45            Dealt with by tools that you use to deploy - but if deploying yourself, then you'll have to run this precompile step manually 
+
+
+-----------------------------------------------
+Video: Stylesheets
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:45            Stylesheets (where asset pipeline is used) should be in /app/assets/stylesheets 
+
+0:01:09            File name ends in .css
+
+Sass files end in .css.scss 
+
+0:01:21            Sass = Syntactically Awesome Stylesheets 
+
+0:01:52            Sass is a scripting language which is interpreted into CSS (nested rules, variables, mixins, selector inheritance)
+
+See http://sass-lang.com 
+
+0:03:18            Use files from Chapter_10 > 10.02 > simple_cms 
+
+0:09:04            Stylesheet links
+
+<link href="/assets/stylesheets/application.css" rel="stylesheet" type="text/css" media="all" /> 
+
+0:09:18            Rails helper makes that much easier
+
+<%= stylesheet_link_tag('application') %> 
+
+0:09:54            Defaults to :media => 'screen'
+
+<%= stylesheet_link_tag('application', :media => 'all') %> 
+
+0:11:09            Launch web server with
+
+rails server 
+
+
+-----------------------------------------------
+Video: JavaScript
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:42            If using asset pipelines, then javascript stored in /app/assets/javascripts
+
+If not using pipelines, /public/javascripts 
+
+0:00:58            CoffeeScript is a scripting language that compiles into JavaScript 
+
+0:05:07            HTML
+
+<script src="/assets/javascripts/application.js" type="text/javascript"></script>
+
+JavaScript Helpers
+
+<%= javascript_include_tag('application') %> 
+
+
+-----------------------------------------------
+Video: JavaScript tag and sanitizing
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:48            escape_javascript()            
+
+0:02:59            or j() for short               
+
+
+-----------------------------------------------
+Video: Images
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:34            images are kept in /app/assets/images
+
+or /public/images if not using pipelines 
+
+
+***********************************************
+Chapter: 11. Forms
+***********************************************
+
+
+-----------------------------------------------
+Video: Form errors
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:27            Simple validation:  validates_presence_of :name 
+
+0:01:27            Useful methods:
+
+object.errors.clear
+object.errors.size
+object.errors.each {|attr, msg| ...}
+# :name, "can't be blank"
+object.errors.full_messages.each {|msg| ...}
+# "Name can't be blank" 
+
+0:02:22            Displaying errors
+
+Put output HTML in a partial:  app/views/application/_error_messages.html.erb
+
+Call with a custom helper: error_messages_for(:object) 
+
+
+-----------------------------------------------
+Video: Prevent cross-site request forgery
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:52            One way to prevent CSRF (Cross-site Request Forgery) is to use an authenticity token. 
+
+0:04:25            authenticity_token added to application_controller (inherited by all controllers) 
+
+0:04:43            If working with JavaScript and Ajax, add a csrf token:
+
+<%= csrf_meta_tag %> 
+
+
+***********************************************
+Chapter: 12. Data Validation
+***********************************************
+
+
+-----------------------------------------------
+Video: Validation methods
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:46            Model is the best place for validations 
+
+0:00:51            ActiveRecord::Validations      
+
+0:01:21            10 validation methods:
+
+validates_presence_of, validates_format_of, validates_length_of, validates_uniqueness_of, validates_numericality_of, validates_acceptance_of, validates_inclusion_of, validates_confirmation_of, validates_exclusion_of, validates_associated 
+
+0:03:13            validates_length_of:
+
+:wrong_length, :too_short, :too_long 
+
+0:10:21            validates_associated... beware of infinite loops 
+
+
+-----------------------------------------------
+Video: Write validations
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:51            What to validate?
+
+* What are your data concerns?  Decide what good and bad data looks like
+* What restrictions does your database impose?  Field types, field lengths, and null allowed
+* What would stop your application from working? 
+
+0:01:17            Review the attributes of each model 
+
+0:07:09            Model.valid? (e.g. Subject.new.valid?) runs all validations and tells you if the current state of the object is valid 
+
+0:07:13            Subject.new.errors says that "name" can't be blank 
+
+
+-----------------------------------------------
+Video: Validates method
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:33            validates method is a sexier version... validates multiple at once.  e.g. validates presence, length, uniqueness, format and confirmation all in one 
+
+
+***********************************************
+Chapter: 13. Controller Features
+***********************************************
+
+
+-----------------------------------------------
+Video: Cookies
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:21            The web is a stateless environment 
+
+0:00:38            Cookies help solve this        
+
+0:01:02            Cookies in Rails work like a hash of values 
+
+0:01:27            Can include an expiration date 
+
+0:02:14            Limitations:
+
+1. Maximum 4k character data size
+2. Reside on user's computer
+3. User has control to CRUD cookies as they see fit 
+
+0:02:27            Use cookies to preserve state and save time.  Only store small pieces of data.  DO NOT STORE MODEL INSTANCES 
+
+0:02:45            Don't store sensitive data     
+
+0:02:51            Don't trust cookie data (users can edit it) 
+
+
+-----------------------------------------------
+Video: Sessions
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:45            Sessions allow us to associate a user desktop cookie with session information on the server 
+
+0:02:31            Limitations of sessions:
+
+1. Requires time to retrieve the session file
+2. Session files accumulate over time - new session file each time a user logs in
+3. Session cookie resides on the user's computer - it can be deleted and it can be used to hijack 
+
+0:04:57            Don't have to use cookies... its configurable.
+
+config/initializers/session_store.rb
+
+config/secrets.yml 
+
+
+-----------------------------------------------
+Video: Controller filters
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:30            Controller filters / controller callbacks
+
+* Execute code before or after a controller action.
+* Filter requests before allowing actions
+* Remove code repetition
+* Perform housekeeping tasks (setup / cleanup) 
+
+0:01:11            e.g. confirm authenticated before allowing user to view a page
+
+Set variables and default values
+
+Find database objects - find a users shopping cart 
+
+0:01:18            Controller filter methods:
+
+1. before_action
+2. after_action
+3. around_action 
+
+0:02:47            Filters must be private - only for use by the controller
+
+N.B. Any render or redirect before an action will prevent the filter from running 
+
+0:03:53            Inherited filters can be skipped - skip_before_action, skip_after_action, skip_around_action 
+
+
+-----------------------------------------------
+Video: Logging
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:46            Server logs (web server logs).  Rails log files have rich detail on processing of requests. 
+
+0:01:01            config/environments/development.log (set by config.log_level = :debug) 
+
+0:01:23            5 log levels - debug, info, warn, error, fatal 
+
+0:02:50            Security and privacy concerns regarding what gets sent to the log file 
+
+0:05:03            rails log:clear to clear the log 
+
+
+***********************************************
+Chapter: 14. User Authentication
+***********************************************
+
+
+-----------------------------------------------
+Video: Secure passwords
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:40            has_secure_password
+
+* Requires bcrypt gem
+* Requires a column called password_digest 
+
+0:04:00            rails generate migration AddPasswordDigestToAdminUsers 
+
+0:05:48            has_secure_password does a lot behind the scenes:
+
+attr_reader :password
+validates_presence_of :password, :on => :create
+validates_confirmation_of :password
+
+def authenticate(unencrypted_password)
+  # ...
+end 
+
+0:08:24            user = AdminUser.new
+user.first_name = 'Dummy'
+user.last_name = 'User'
+user.email = 'dummy@user.co.za'
+user.username = 'dummyuser1'
+user.valid?
+user.errors.full_messages
+user.password = 'dummypassword'
+user.valid?
+user.password_digest
+user.authenticate('not')
+user.authenticate('dummypassword') 
+
+
+-----------------------------------------------
+Video: Create a controller for access
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:28            rails generate controller Access menu login 
+
+0:02:52            rails routes                   
+
+
+-----------------------------------------------
+Video: Login and logout
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:06:25            flash[:notice] shows on the next page;  it is persisted with the session.  That is a screen too late if we're showing a failed login notice.  We could change the location of the redirect, but that will have other consequences.
+
+flash.now solves this problem 
+
+0:07:41            Stop the rails server for a moment to make sure that we know what our admin user password is.
+
+rails console
+
+user = AdminUser.first
+user.password = 'secretpassword'
+user.save
+
+rails server 
+
+
+-----------------------------------------------
+Video: Restrict access
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:36            Make sure user is logged in by adding a before_action to the AccessController 
+
+
+***********************************************
+Chapter: 15. Improve the Simple CMS
+***********************************************
+
+
+-----------------------------------------------
+Video: Challenge: AdminUser CRUD
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:35            Goals of the project:
+
+1. Model
+    a) Define a method #nam that returns first_name and last_name with a space between
+    b) Define a named scope called #sorted that order by last_name and then first_name
+2. Controller
+    a) Generate AdminUsersController with seven actions:  index, new, create, edit, update, delete, destroy (there is no show action)
+    b) After generated, replace match routes with resourceful routes
+    c) Use the admin layout
+    d) index:  sort by last_name, then first_name
+    e) Try to write all the other CRUD actions by self (try not to copy paste from other controllers)
+    f) Use strong parameters to permit mass assignment
+    g) Restrict access to all actions to logged in users
+3. Views
+    a) Set the HTML page title in each template
+    b) Use view and form helpers
+    c) Display form errors
+    d) Link from access/menu.html.erb to admin user CRUD
+    e) and link back the other way as well from admin_users/index.html.erb back to menu 
+
+
+-----------------------------------------------
+Video: Solution: AdminUser CRUD
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:00:50            rails generate controller AdminUsers index new edit delete 
+
+0:04:53            pluralize(value, string) - pluralises string 
+
+
+-----------------------------------------------
+Video: Public area
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:33            rails generate controller Public index show 
+
+0:01:56            Move root route back to the top and change to public#index 
+
+
+-----------------------------------------------
+Video: Public area navigation
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:04:25            rails routes                   
+
+
+-----------------------------------------------
+Video: Nesting pages in subjects
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:01:24            Use before_action to find subject 
+
+
+-----------------------------------------------
+Video: Adding RubyGems: acts_as_list
+-----------------------------------------------
+Note Time:         Note Text:                     
+
+0:02:56            Popular gems to consider:
+
+acts_as_list:  Manage objects with positions
+will_paginate:  Pagination
+exception_notification:  Send emails when errors occur
+paperclip:  Manage files uploaded via web forms
+carrierwave:  Manage files uploaded via web forms
+delayed_job:  Queue tasks to run later
+friendly_id:  Semantic URLs
+activemerchant:  Credit card processing 
+
+0:04:48            Add to Gemfile:
+
+gem 'acts_as_list', '~> 0.7.6' 
+
