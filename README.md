@@ -12,3 +12,4 @@ Take a look at my code:
 
 1. [Ruby essentials 1](./ruby_essentials_1/README.md)
 1. [Ruby on Rails 5 essential training](./ruby_on_rails_5_essential_training/README.md)
+1. [JavaScript: Functions](./javascript_functions/README.md)
